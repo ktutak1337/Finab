@@ -5,6 +5,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\..\Modules\Wallets\Finab.Modules.Wallets.Api\Finab.Modules.Wallets.Api.csproj" />
       <ProjectReference Include="..\..\Shared\Finab.Shared.Infrastructure\Finab.Shared.Infrastructure.csproj" />
     </ItemGroup>
 

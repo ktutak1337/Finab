@@ -1,6 +1,7 @@
+using Finab.Modules.Wallets.Api;
+using Finab.Shared.Infrastructure;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
@@ -10,7 +11,8 @@ namespace Finab.Bootstrapper
     {
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            services.AddInfrastructure();
+            services.AddWallets();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -20,13 +22,7 @@ namespace Finab.Bootstrapper
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseRouting();
-
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-                endpoints.MapGet("/", async context => await context.Response.WriteAsync("Finab API!"));
-            });
+            app.UseInfrastructure();
         }
     }
 }
